@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="listToDo"></div>
+  <h3>ToDo list</h3>
+
+  <input
+    class="todo-input"
+    type="text"
+    placeholder="newToDo"
+    name="toDoInput"
+    [(ngModel)]="toDoDescription"
+  />
+  <button (click)="addToDo()">Add</button>
+
+  <ul class="list" style="list-style: none">
+    <li *ngFor="let toDo of allToDos">
+      <div *ngIf="!toDo.editing; else editingTodo" (dblclick)="editTodo(toDo)">
+        <input type="checkbox" /><span> {{ toDo.description }} </span
+        ><button (click)="removeToDo(toDo.id)">X</button>
+      </div>
+      <ng-template #editingTodo>
+        <input
+          type="text"
+          class="edit-todo"
+          [(ngModel)]="toDo.description"
+          (keyup.enter)="doneEdit(toDo)"
+        />
+      </ng-template>
+    </li>
+  </ul>
+
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+</div>

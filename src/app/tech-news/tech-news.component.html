@@ -1,0 +1,52 @@
+<div class="great-news-container">
+  <div class="title">
+    <p class="newsTitle">
+      Technology News
+      <span>
+        <div id="country">
+          <input
+            type="radio"
+            id="usa"
+            name="country"
+            value="us"
+            checked
+            (change)="changeId1($event, id1)"
+          />
+          <label for="usa">USA</label>
+
+          <input
+            type="radio"
+            id="uk"
+            name="country"
+            value="gb"
+            (change)="changeId1($event, id1)"
+          />
+          <label for="uk">UK</label>
+
+          <input
+            type="radio"
+            id="rom"
+            name="country"
+            value="ro"
+            (change)="changeId1($event, id1)"
+          />
+          <label for="rom">Romania</label>
+        </div>
+      </span>
+    </p>
+  </div>
+  <div id="news-c" class="news-container" *ngFor="let techNewsTemp of techNews">
+    <h4>
+      {{ techNewsTemp.author }}<span> __{{ techNewsTemp.title }} </span>
+    </h4>
+    <div class="content">
+      <h5 id="news-cont">{{ techNewsTemp.description }}</h5>
+
+      <img class="imgNews" src="{{ techNewsTemp.urlToImage }}" />
+    </div>
+    <a href="{{ techNewsTemp.url }}"
+      >More details from {{ techNewsTemp.url.slice(0, 25) }}</a
+    >
+    <p id="author"></p>
+  </div>
+</div>

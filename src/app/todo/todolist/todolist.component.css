@@ -1,0 +1,30 @@
+input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+}
+
+.container {
+  width: 35vw;
+  height: 50vh;
+
+  /* border: 1px solid navy; */
+}
+
+.todo-input,
+.list,
+.edit-todo {
+  width: 35vh;
+  overflow: auto;
+}
+
+li {
+  width: 95%;
+  word-wrap: break-word;
+}
+
+h3 {
+  height: 55px;
+  width: 95%;
+  background-color: rgb(17, 127, 131);
+  color: white;
+  font-family: cursive;
+}

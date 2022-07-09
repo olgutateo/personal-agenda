@@ -1,0 +1,7 @@
+<p>{{ currency.date }}</p>
+<p><input type="number" [(ngModel)]="amount" />{{ currency.base }} =</p>
+<ul>
+  <li>{{ amount * currency.rates["GBP"] }} GBP</li>
+  <li>{{ amount * currency.rates["RON"] }} RON</li>
+  <li>{{ amount * currency.rates["USD"] }} USD</li>
+</ul>

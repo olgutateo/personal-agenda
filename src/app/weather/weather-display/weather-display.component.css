@@ -1,0 +1,12 @@
+img {
+  height: 40px;
+}
+
+.weather-details {
+  display: flex;
+}
+
+.weather-container {
+  display: flex;
+  text-align: center;
+}

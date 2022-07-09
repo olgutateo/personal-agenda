@@ -1,0 +1,24 @@
+.main-container {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+}
+.left,
+.right {
+  height: 100vh;
+}
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 3px solid red; */
+}
+.right {
+  justify-content: space-around;
+}
+.middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
