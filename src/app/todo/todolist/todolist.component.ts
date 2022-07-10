@@ -9,7 +9,13 @@ import { LocalStorageService } from '../local-storage.service';
 })
 export class TodolistComponent implements OnInit {
   newToDo?: TodoInterface;
-  allToDos: TodoInterface[] = [];
+  allToDos: TodoInterface[] = [
+    {
+      id: 0,
+      description: '',
+      editing: false,
+    },
+  ];
   idForToDo: number = 1;
   toDoDescription!: string;
   storage: string = '';
@@ -23,16 +29,13 @@ export class TodolistComponent implements OnInit {
       return;
     }
     this.errorMessage = '';
-    this.allToDos.push({
+    this.allToDos.push!({
       id: this.idForToDo,
       description: this.toDoDescription,
       editing: false,
     });
     console.log(this.allToDos);
-    this.localStore.saveData(
-      (this.storage = JSON.stringify(this.allToDos)),
-      JSON.stringify(this.allToDos[0])
-    );
+    this.localStore.saveData('allToDos', JSON.stringify(this.allToDos));
     console.log('ls' + this.localStore);
     this.toDoDescription = '';
     this.idForToDo++;
@@ -48,6 +51,7 @@ export class TodolistComponent implements OnInit {
 
   removeToDo(id: number) {
     this.allToDos = this.allToDos.filter((toDo) => toDo.id != id);
+    this.localStore.saveData('allToDos', JSON.stringify(this.allToDos));
   }
 
   editTodo(toDo: TodoInterface) {
@@ -60,6 +64,6 @@ export class TodolistComponent implements OnInit {
 
   ngOnInit(): void {
     this.toDoDescription = '';
-    //   this.storage = JSON.parse(this.localStore.getData(this.storage))
+    this.allToDos = JSON.parse(this.localStore.getData('allToDos')!);
   }
 }
